@@ -1,31 +1,3 @@
-/*const passport=require('passport');
-const JWTStrategy=require('passport-jwt').Strategy;
-const ExtractJWT=require('passport-jwt').ExtractJwt;
-
-const Doctor=require('../models/doctor');
-
-let opts={
-    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey:'HospitalAPI'
-}
-
-passport.use(new JWTStrategy(opts,async function(jwtPayLoad,done){
-    console.log('******extracting********');
-    try{
-        const doctor=await Doctor.findById(jwtPayLoad._id);
-        if(user){
-            return done(null,doctor);
-        }else{
-            return done(null,false);
-        }
-    }catch(err){
-        console.log("Error in finding doctor from JWT");
-    }
-}));
-
-module.exports=passport;*/
-
-
 const passport=require('passport');
 const JWTStrategy=require('passport-jwt').Strategy;
 //It will extract jwt token from the header

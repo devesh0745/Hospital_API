@@ -1,9 +1,8 @@
 const Patient=require('../../../models/patients');
-//const jwt=require('jsonwebtoken');
 
+//Register patients 
 module.exports.registerPatient=async function(req,res){
- //   console.log('**********:',req.user);
-
+    console.log('*******:',req.user);
     try{
         const patient=await Patient.findOne({phoneNumber:req.body.phoneNumber});
         if(!patient){
@@ -13,6 +12,7 @@ module.exports.registerPatient=async function(req,res){
                 doctor:req.user._id
             });
             return res.json(200,{
+                patients_details:newPatient,
                 message:"Patient registration successfull"
             });
         }else{

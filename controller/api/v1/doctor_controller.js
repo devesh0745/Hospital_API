@@ -2,6 +2,7 @@ const Doctor=require('../../../models/doctor');
 
 const jwt=require('jsonwebtoken');
 
+//Creating doctor 
 module.exports.createDoctor=async function(req,res){
   //  console.log('***:',req.body.name)
     try{
@@ -18,12 +19,15 @@ module.exports.createDoctor=async function(req,res){
         }
     }catch(err){
     //    console.log(err);
+    console.log("error in creating doctor:",err);
         return res.json(500,{
+            
             message:"Internal server Error!"
         });
 };
 };
 
+//Signing in user
 module.exports.createSession=async function(req,res){
     try{
         const doctor=await Doctor.findOne({email:req.body.email});
@@ -34,6 +38,7 @@ module.exports.createSession=async function(req,res){
                 message:"Invalid Username or Password"
             });
         }
+        //Creating jwt token
         return res.json(200,{
             message:'Sign-in Successful,here is your token!',
             data:{

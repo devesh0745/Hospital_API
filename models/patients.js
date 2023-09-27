@@ -1,3 +1,4 @@
+//Schema for patient
 const mongoose=require('mongoose');
 
 const patientSchema=new mongoose.Schema({
@@ -7,7 +8,8 @@ const patientSchema=new mongoose.Schema({
     },
     phoneNumber:{
         type:Number,
-        required:true
+        required:true,
+        unique:true
     },
     reports:[{
         type:mongoose.Schema.Types.ObjectId,

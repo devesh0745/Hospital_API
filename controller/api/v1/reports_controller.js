@@ -2,6 +2,8 @@ const Report=require('../../../models/reports');
 const Doctor=require('../../../models/doctor');
 const Patient=require('../../../models/patients');
 
+
+//Creating reports for patients
 module.exports.createReport=async function(req,res){
     try{
         const patient=await Patient.findById(req.params.id);
@@ -27,6 +29,7 @@ module.exports.createReport=async function(req,res){
     }
 }
 
+//To display all the reports.
 module.exports.allReports=async function(req,res){
     try{
         const patientReports=await Patient.findById(req.params.id).populate('reports');
@@ -45,6 +48,7 @@ module.exports.allReports=async function(req,res){
     }
 }
 
+//To display all reports with specific status.
 module.exports.reportsStatus=async function(req,res){
     try{
         const status_report=await Report.find({status:req.params.status});
